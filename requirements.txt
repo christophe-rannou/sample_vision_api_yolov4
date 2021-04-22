@@ -1,0 +1,12 @@
+numpy==1.20.2
+opencv-python==4.5.1.48
+scipy==1.6.2
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
+click==7.1.2
+flask==1.1.2
+itsdangerous==1.1.0
+onnxruntime==1.7.0
+protobuf==3.15.8
+six==1.15.0
