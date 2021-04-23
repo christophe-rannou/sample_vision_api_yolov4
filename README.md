@@ -1,4 +1,4 @@
-# Sample Image API - Docker image
+# Sample Vision API ONNX runtime - Docker image
 
 This project provides a simple Flask API which offers object annotation on images with the YOLOv4 API leveraging onnxruntime. 
 A Docker file is also provided to build an image of this API.
@@ -102,6 +102,25 @@ With the new token you can now call the vision API
 export APP_TOKEN=<app-token>
 curl -X POST "https://<job-id>.job.gra.training.ai.cloud.ovh.net" -F "file=@kite.jpeg" --output anotated_kite.jpeg -H "Authorization: Bearer $APP_TOKEN"
 ```
+
+Input: `kite.jpeg`
+
+![kite.jpeg](resources/kite.jpeg)
+
+Output: `anotated_kite.jpeg`
+
+![anotated_kite.jpeg](resources/anotated_kite.jpeg)
+
+## Adapt the API
+
+There is two main files in the project:
+- `api.py` a basic Flask API that reads an image file from the request and return an inferred image as a result
+- `inference.py` the inference code including preprocessing and postprocessing steps
+
+To add your own vision API you simply need to redefine the `infer` function in `inference.py`.
+This function takes an image input stream that needs to be decoded, and the ONNX runtime session with the trained model loaded.
+
+To create additional routes refer to the [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/)
 
 ## Publication/Attribution
 * [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934). Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao.
